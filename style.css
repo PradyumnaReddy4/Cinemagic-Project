@@ -1,0 +1,655 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-padding: 2rem;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --main-color: #ff2c1f;
+    --text-color: #020307;
+    --bg-color: #fff;
+}
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+    background: var(--text-color);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 5rem;
+}
+
+body {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+section {
+    padding: 4.5rem 0 1.5rem;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; /* Stack top-header and nav vertically */
+    align-items: center;
+    padding: 10px 20px;
+    transition: 0.5s;
+}
+
+header.shadow {
+    background: var(--bg-color);
+    box-shadow: 0 0 4px rgb(14 55 54 / 15%);
+}
+
+header.shadow .navbar a {
+    color: var(--bg-color);
+}
+
+header.shadow .logo {
+    color: var(--bg-color);
+}
+
+.logo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.logo .bx {
+    font-size: 24px;
+    color: var(--main-color);
+}
+
+/* Updated top-header for better alignment */
+.top-header {
+    display: flex;
+    justify-content: space-between; /* Spread elements across the header */
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+/* Search Bar and Button Container */
+.search-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allow search bar to take available space */
+    justify-content: center; /* Center the search bar */
+    margin: 0 20px; /* Add space on both sides */
+}
+
+/* Search Bar Styling */
+#movie-search {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    color: black !important; /* Ensure input text is black */
+}
+
+/* Search Button Styling */
+button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button i {
+    font-size: 20px;
+}
+
+/* Sign-In Button Styling */
+.btn {
+    padding: 10px 20px;
+    background-color: #ff2c1f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.sign-btn {
+    margin-left: auto; /* Push the button to the right corner */
+}
+
+.btn:hover {
+    background: #fd0004;
+}
+
+.navbar {
+    display: flex;
+    column-gap: 5rem;
+    font-weight: 700;
+    margin-top: 10px; /* Space between top-header and navbar */
+}
+
+.navbar li {
+    position: relative;
+    text-transform: uppercase;
+} 
+
+.navbar a {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--bg-color);
+    position: relative;
+}
+
+.navbar a::after {
+    content: "";
+    height: 2px;
+    background: var(--main-color);
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    transition: 0.4s all linear;
+}
+
+.navbar a:hover::after, 
+.navbar .Home-Active::after {
+    width: 100%;
+}
+
+#menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000001;
+    display: none;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: rgba(2, 3, 7, 0.4);
+    object-position: center;
+}
+
+.container img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    transform: scale(1);
+}
+
+.swiper-pagination-bullet {
+    width: 6px !important;
+    height: 6px !important;
+    border-radius: 0.2rem !important;
+    background: var(--bg-color) !important;
+    opacity: 1 !important;
+}
+
+.swiper-pagination-bullet-active {
+    width: 1.5rem !important;
+    background: var(--main-color) !important;
+}
+
+.home-text {
+    position: absolute;
+    z-index: 1000;
+    padding: 0 10%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: left;
+}
+
+.home-text span {
+    color: var(--bg-color);
+    font-weight: 500;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.home-text h1 {
+    color: var(--bg-color);
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.home {
+    height: 640px;
+}
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+}
+
+.play {
+    position: absolute;
+    right: 4rem;
+    bottom: 10%;
+}
+
+.play .bx {
+    background: var(--bg-color);
+    padding: 10px;
+    font-size: 2rem;
+    border-radius: 50%;
+    border: 4px solid rgb(2,3,7,0.4);
+    color: var(--main-color);
+}
+
+.play .bx:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    transition: 0.2s all linear;
+}
+
+.heading {
+    max-width: 968px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--main-color); 
+}
+
+.movies-container {
+    max-width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, auto));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.box .box-img {
+    width: 100%;
+    height: 280px;
+}
+
+.box .box-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.box .box-img img:hover {
+    transform: translateY(-10px);
+    transition: 0.2s all linear;
+}
+
+.box h3 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.box h3:hover {
+    transform: translateY(-2px);
+    color: var(--main-color);
+}
+
+.box span {
+    font-size: 13px;
+}
+
+.movies-container .box {
+    position: relative;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.movies-container .box .box-img {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.movies-container .box .box-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movies-container .box .box-img .rating {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.coming-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 80%;
+    margin: 2rem auto;
+}
+
+.coming-container .box {
+    width: 32%;
+    text-align: center;
+}
+
+.coming-container .box .box-img {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.coming-container .box .box-img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.subscribe {
+    max-width: 968px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 2rem;
+}
+
+.subscribe h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.subscribe form {
+    background: var(--bg-color);
+    padding: 10px;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.subscribe form input {
+    border: none;
+    outline: none;
+}
+
+.subscribe form .email {
+    width: 600px;
+}
+
+.subscribe form input::placeholder {
+    color: var(--text-color);
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.subscribe .btn {
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.footer {
+    max-width: 968px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+
+.social .bx {
+    background: var(--bg-color);
+    padding: 2px;
+    font-size: 2rem;
+    border-radius: 50%;
+    border: 4px solid rgba(2, 3, 7, 0.4);
+    color: var(--main-color);
+}
+
+.social .bx:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    transition: 0.2s all linear;
+}
+
+* {
+    color: var(--bg-color);
+}
+
+/* styles.css */
+body {
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: black;
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.login-section {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #222;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.login-section h2 {
+    margin-bottom: 20px;
+}
+
+.login-section input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    color: black !important; /* Ensure login form input text is black */
+}
+
+.login-section button {
+    background: #e50914;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.login-section button:hover {
+    background: darkred;
+}
+
+.login-section p {
+    margin-top: 20px;
+}
+
+.login-section a {
+    color: #e50914;
+    text-decoration: none;
+}
+
+.login-section a:hover {
+    text-decoration: underline;
+}
+/* About Us Section */
+.about-us {
+    max-width: 1200px; /* Increased max-width for better spacing */
+    margin: 0 auto;
+    padding: 4.5rem 20px;
+    text-align: center;
+}
+
+.about-content {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.about-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.about-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--main-color);
+}
+
+.about-content a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+}
+
+.about-content .social {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    column-gap: 1rem;
+}
+
+/* Team Section */
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased min width for better spacing */
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-items: center;
+    padding: 0 20px; /* Add padding to prevent edge sticking */
+}
+
+.team-member {
+    text-align: center;
+    background: #222; /* Add a subtle background for contrast */
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px); /* Add a hover effect */
+}
+
+.member-img {
+    width: 120px; /* Reduced size for better proportion */
+    height: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--main-color); /* Add a border for visual appeal */
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--bg-color);
+}
+
+.team-member p {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Increased gap for clarity */
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--main-color);
+    font-size: 1.8rem; /* Increased icon size */
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--bg-color);
+}
+
+.team-member .email {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.team-member .email a {
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.team-member .email a:hover {
+    color: var(--main-color);
+}
+
+.team-member .email i {
+    font-size: 1.2rem;
+}

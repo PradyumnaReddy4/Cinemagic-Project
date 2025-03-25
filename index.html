@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMagic - Book with Ease</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <header>
+        <div class="top-header">
+            <!-- Logo & Brand Name -->
+            <a href="#" class="logo">
+                <i class='bx bx-movie'></i>
+                <h2>CineMagic</h2>
+            </a>
+    
+            <!-- Search Bar and Button Group -->
+            <div class="search-container">
+                <input type="text" id="movie-search" placeholder="Search for movies...">
+                <button onclick="searchMovie()"><i class='bx bx-search'></i></button>
+            </div>
+    
+            <!-- Sign-In Button -->
+            <a href="/login.html" class="btn sign-btn">Sign In</a>
+        </div>
+    
+        <!-- Navigation Bar -->
+        <nav>
+            <ul class="navbar">
+                <li><a href="#home" class="Home-Active"><b>Home</b></a></li>
+                <li><a href="#recommended"><b>Recommended</b></a></li>
+                <li><a href="#openingtisweek"><b>Opening This Week</b></a></li>
+                <li><a href="#coming"><b>Coming Soon</b></a></li>
+                <li><a href="#resell"><b>Resell Tickets</b></a></li>
+                <li><a href="aboutus.html"><b>About Us</b></a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <script>
+        // Predefined list of movies
+        const availableMovies = ["Avengers", "Inception", "Titanic", "The Dark Knight", "Jawan", "KGF", "RRR", "Sarkaru Vaari Paata"];
+    
+        function searchMovie() {
+            const selectedLocation = document.getElementById("location").value;
+            const movieQuery = document.getElementById("movie-search").value.trim();
+    
+            if (!movieQuery) {
+                alert("Please enter a movie name.");
+                return;
+            }
+    
+            if (availableMovies.includes(movieQuery)) {
+                alert(`"${movieQuery}" is available in ${selectedLocation}!`);
+            } else {
+                alert(`"${movieQuery}" is not available in ${selectedLocation}.`);
+            }
+        }
+    </script>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="container">
+            <div class="home-text">
+                <h1>Welcome to CineMagic</h1>
+                <h2>Your Ticket to Unlimited Entertainment</h2>
+            </div>
+            <div class="home-image">
+                <img src="images/logo1.png" alt="CineMagic Offers">
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Movies Section -->
+    <section class="movies" id="recommended">
+        <h2 class="heading" style="text-align: center; font-weight: bold;">Recommended</h2>
+        <div class="movies-container">
+            <div class="box">
+                <div class="box-img">
+                    <a href="thor.html">
+                        <img src="images/m7.jpg" alt="Thor">
+                    </a>
+                </div>
+                <h3><b>Thor</b></h3>
+                <span>148 min | Sci-Fi Thriller</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <a href="blackp.html">
+                        <img src="images/m6.jpg" alt="Black Panther">
+                    </a>
+                </div>
+                <h3><b>Black Panther</b></h3>
+                <span>169 min | Sci-Fi Adventure</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <a href="mortalk.html">
+                        <img src="images/m9.jpg" alt="Mortal Engines">
+                    </a>
+                </div>
+                <h3><b>Mortal Engines</b></h3>
+                <span>122 min | Drama Thriller</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <a href="bloodwar.html">
+                        <img src="images/m10.jpg" alt="Blood Wars">
+                    </a>
+                </div>
+                <h3><b>Blood Wars</b></h3>
+                <span>122 min | Drama Thriller</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <a href="aquaman.html">
+                        <img src="images/m5.jpg" alt="Aquaman">
+                    </a>
+                </div>
+                <h3><b>Aquaman</b></h3>
+                <span>120 min | Action Thriller Superhero</span>
+            </div>
+            <!-- Added Sarkaru Vaari Paata -->
+            <div class="box">
+                <div class="box-img">
+                    <a href="sarkaru.html">
+                        <img src="images/svp.webp" alt="Sarkaru Vaari Paata">
+                    </a>
+                </div>
+                <h3><b>Sarkaru Vaari Paata</b></h3>
+                <span>162 min | Action Drama</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opening This Week Section -->
+    <section class="movies" id="openingtisweek">
+        <h2 class="heading" style="text-align: center; font-weight: bold;"><b>Opening This Week</b></h2>
+        <div class="movies-container">
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/m1.jpg" alt="Venom">
+                </div>
+                <h3><b>Venom</b></h3>
+                <span>120 min | Action</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/m2.jpg" alt="Dunkirk">
+                </div>
+                <h3><b>Dunkirk</b></h3>
+                <span>120 min | Action Adventure</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/m3.jpg" alt="Batman VS Superman">
+                </div>
+                <h3><b>Batman VS Superman</b></h3>
+                <span>120 min | Action Thriller Superhero</span>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="images/m4.jpg" alt="John Wick 2">
+                </div>
+                <h3><b>John Wick 2</b></h3>
+                <span>120 min | Action Thriller Superhero</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coming Soon Section -->
+    <section class="coming" id="coming">
+        <h2 class="heading" style="text-align: center; font-weight: bold;"><b>Coming Soon</b></h2>  
+        <div class="coming-container swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/coming1.jpg" alt="Johnny English">
+                    </div>
+                    <h3><b>Johnny English</b></h3>
+                    <span>120 min | Action</span>
+                </div>
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/coming2.jpg" alt="WarCraft">
+                    </div>
+                    <h3><b>WarCraft</b></h3>
+                    <span>120 min | Action Adventure</span>
+                </div>
+                <div class="swiper-slide box">
+                    <div class="box-img">
+                        <img src="images/coming3.jpg" alt="Rampage">
+                    </div>
+                    <h3><b>Rampage</b></h3>
+                    <span>120 min | Action Thriller Superhero</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="subscribe" id="subscribe">
+        <h2><b>Subscribe To Get <br> Updates </b></h2>
+        <form action="">
+            <input type="email" class="email" placeholder=" Enter Email.... " required>
+            <input type="submit" value="Subscribe" class="btn"> 
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <a href="#" class="logo">
+            <i class='bx bx-movie'></i><h2>CineMagic</h2>
+        </a>
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+        </div>
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
